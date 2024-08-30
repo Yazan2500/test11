@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تحويل الرسائل إلى البوت</title>
+    <style>
+        /* إضافة بعض التنسيقات للصفحة */
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+
+        button {
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>تحويل الرسائل إلى البوت</h1>
+
+    <button onclick="sendToBot('123')">تحويل رسالة 123</button>
+    <button onclick="sendToBot('456')">تحويل رسالة 456</button>
+    <button onclick="sendToBot('789')">تحويل رسالة 789</button>
+
+    <script>
+        function sendToBot(messageId) {
+            fetch('http://localhost:3000/sendCommand', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ messageId: messageId, chatId: 'CHAT_ID' }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert('تم إرسال الأمر للبوت بنجاح!');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                alert('حدث خطأ عند إرسال الأمر.');
+            });
+        }
+    </script>
+</body>
+</html>
