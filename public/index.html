@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        // تأكد من تحميل مكتبة Telegram Web App
+        window.Telegram.WebApp.ready();
+
+        function sendMessage() {
+            const messageId = document.getElementById('messageId').value;
+            if (!messageId) {
+                alert('يرجى إدخال معرف الرسالة');
+                return;
+            }
+            // إرسال البيانات إلى Telegram Web App
+            Telegram.WebApp.sendData(messageId);
+        }
+    </script>
+    <title>Telegram Web App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        input {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>إرسال معرف الرسالة إلى البوت</h1>
+    <input type="text" id="messageId" placeholder="أدخل معرف الرسالة هنا" />
+    <button onclick="sendMessage()">إرسال</button>
+
+    
+</body>
+</html>
